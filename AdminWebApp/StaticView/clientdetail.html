@@ -1,0 +1,116 @@
+
+
+<div class="row">
+    <i class="fa fa-arrow-circle-o-left fa-3x" ng-click="goToClientIndex()"></i>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <form name="personelInfo" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9"><input type="text" disabled class="form-control" placeholder="--first name--" ng-model="personnel.first_name" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9"><input type="text" disabled class="form-control" placeholder="--last name--" ng-model="personnel.last_name" required></div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9"><input disabled type="email" placeholder="--email--" class="form-control" ng-model="personnel.email" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Address</label>
+                        <div class="col-sm-9"><input disabled type="text" placeholder="--email--" class="form-control" ng-model="personnel.Address" required></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="ibox-content">
+
+        <button type="button" class="btn btn-white btn-sm" ng-click="addNewHouseComponent()" title="Add new component, like bedroom"><i class="fa fa-plus-circle "></i> Add</button>
+        <button type="button" class="btn btn-w-m btn-primary" ng-click="generateReport()" title="Generate a report"><i class="fa fa-plus-circle "></i> Generate Report</button>
+    <div>
+
+            
+           
+            <div class="project-list">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr ng-repeat="component in componentList">
+
+                            <td class="project-title">
+                              {{component.description}}
+                            </td>
+                            
+                            <td class="project-actions">
+                                <a class="btn btn-white btn-sm" ng-click="openClientHouseDetail(component)"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-white btn-sm" ng-click=""><i class="fa fa-trash-o"></i></a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+              
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New property component</h3>
+    </div>
+    <div class="modal-body">
+        <form name="personelInfo" class="form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label"> Type:</label>
+                <div class="col-sm-9">
+                    <select name="repeatSelect" id="repeatSelect" ng-model="selectedItem">
+                        <option value="">---Please select---</option>
+                        <option ng-repeat="option in items" value="{{option.name}}">{{option.name}}</option>
+                    </select>
+
+                    <!--<select ng-model="selectedItem" ng-options="item as item.name for item in items track by item.name">
+                        <option value="">Please select a product...</option>
+                    </select>-->
+                </div>
+            </div>
+          
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label"> Name:</label>
+                <div class="col-sm-9"><input type="text"  class="form-control" placeholder="e.g. Bedroom1" ng-model="componentName" required></div>
+            </div>
+        </form>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="!componentName">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
